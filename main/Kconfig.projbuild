@@ -1,0 +1,90 @@
+# put here your custom config value
+menu "esp32-cam-sensor Configuration"
+    menu "Network parameters"
+        config ESP_WIFI_SSID
+            string "WiFi SSID"
+            default "MySSID"
+            help
+                SSID (network name) for the example to connect to.
+
+        config ESP_WIFI_PASSWORD
+            string "WiFi Password"
+            default "MyPassword"
+            help
+                WiFi password (WPA or WPA2) for the example to use.
+
+        config ESP_MAXIMUM_RETRY
+            int "WIFI Connect Maximum retry"
+            default 5
+            help
+                Set the Maximum retry to avoid station reconnecting to the AP unlimited when the AP is really inexistent.
+    endmenu
+
+    menu "Hardware camera parameters"
+        choice BOARD_CAMERA_MODEL
+            bool "Board Camera model"
+            default T_CAMERA_MINI
+
+            config T_CAMERA_MINI
+                bool "T-Camera Mini - no display - with battery"
+            config LILYGO_CAM
+                bool "LilyGo Cam with Mic and display v1.6.2"
+        endchoice
+
+        choice CAMERA_RESOLUTION
+            bool "Camera resolution - frame size"
+            default FRAME_SIZE_QVGA
+
+            config FRAME_SIZE_QVGA
+                bool "FRAME_SIZE_QVGA 320x240"
+            config FRAME_SIZE_VGA
+                bool "FRAME_SIZE_VGA 640x480"
+            config FRAME_SIZE_SVGA
+                bool "FRAME_SIZE_SVGA 800x600"
+            config FRAME_SIZE_XGA
+                bool "FRAME_SIZE_XGA 1024x768"
+            config FRAME_SIZE_UXGA
+                bool "FRAME_SIZE_UXGA 1600x1200"
+        endchoice
+
+        choice CAMERA_PIXEL
+            bool "Camera pixel format"
+            default PIXEL_FORMAT_RGB565
+
+            config PIXEL_FORMAT_RGB565
+                bool "PIXEL_FORMAT_RGB565 2BPP/RGB565"
+            config PIXEL_FORMAT_YUV422
+                bool "PIXEL_FORMAT_YUV422 2BPP/YUV422"
+            config PIXEL_FORMAT_GRAYSCALE
+                bool "PIXEL_FORMAT_RGB565 1BPP/GRAYSCALE"
+            config PIXEL_FORMAT_JPEG
+                bool "PIXEL_FORMAT_JPEG JPEG/COMPRESSED"
+            config PIXEL_FORMAT_RGB888
+                bool "PIXEL_FORMAT_RGB888 3BPP/RGB888"
+        endchoice
+    endmenu
+
+    menu "Motion detection parameters"
+        config BLOCK_SIZE
+            int "Block size (in pixels)"
+            default 10
+            range 0 100
+            help
+                Size of each sensor block on the display.
+
+        config BLOCK_DIFF_THRESHOLD
+            int "Block diff threshold (in %)"
+            default 20
+            range 0 100
+            help
+                The minimum percentage for each block to detect a change.
+
+        config IMAGE_DIFF_THRESHOLD
+            int "Image diff threshold (in %)"
+            default 20
+            range 0 100
+            help
+                The minimum percentage for a image to consider a motion.
+    endmenu
+
+endmenu
