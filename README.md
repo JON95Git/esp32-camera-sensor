@@ -129,9 +129,9 @@ counter: -1
 
 #### HTTP server mode
 
-After changing the SSID and PASSWORD, the board will get and dynamic IP (see the logs).
+After changing the SSID and PASSWORD, the board will get a dynamic IP (see the logs).
 
-For example, supose the board get the IP `192.168.15.143`, use this IP in your browser. The responde will be:
+For example, supose the board get the IP `192.168.15.143`, use this IP in your browser. The response will be:
 
 ```
 Available URIs: /counter, /status and /stream
