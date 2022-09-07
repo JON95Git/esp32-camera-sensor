@@ -63,7 +63,7 @@ picocom -b 115200 -r -l /dev/ttyACM0
 
 Observe the log:
 
-```bash
+```log
 I (1585) cam_hal: cam init ok
 I (1595) sccb: pin_sda 13 pin_scl 12
 I (1605) camera: Detected camera at address=0x30
